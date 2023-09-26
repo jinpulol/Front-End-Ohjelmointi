@@ -1,8 +1,7 @@
 import { useState } from "react";
 
-export default function Todolist() {  // component
+export default function Todolist() {
 
-    // states
     const [todos, setTodos] = useState([])
     const [todo, setTodo] = useState({ descr: "", date: "" })
 
@@ -16,12 +15,24 @@ export default function Todolist() {  // component
         setTodos([...todos, todo])
     }
 
+    const deleteTodo = (event) => {
+        event.preventDefault();
+        setTodos(todos.filter((todo, index) => parseInt(event.target.id) !== index))
+    }
+
     const todoRows = todos.map((todo, index) =>
 
         <tr key={index}>
             <td>{todo.date}
             </td>
             <td>{todo.descr}
+            </td>
+            <td>
+                <button
+                    id={index}
+                    onClick={deleteTodo}>
+                    Delete
+                </button>
             </td>
         </tr>
     )
