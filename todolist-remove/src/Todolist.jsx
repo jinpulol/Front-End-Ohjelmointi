@@ -57,14 +57,16 @@ export default function Todolist() {
                 Add
             </button>
             <table>
-                <tr>
-                    <th>
-                        Date:
-                    </th>
-                    <th>
-                        Task:
-                    </th>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>
+                            Date:
+                        </th>
+                        <th>
+                            Task:
+                        </th>
+                    </tr>
+                </thead>
                 <tbody>
                     {todoRows}
                 </tbody>
