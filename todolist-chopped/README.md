@@ -1,4 +1,4 @@
 Todo list:
-delete-napilla,
-pilkotuilla komponenteilla
+- delete-napilla,
+- pilkotuilla komponenteilla
 
