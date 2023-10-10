@@ -29,6 +29,9 @@ function TodoTable(props) {
                     <th>
                         Task:
                     </th>
+                    <th>
+                        Priority:
+                    </th>
                 </tr>
             </thead>
             <tbody>

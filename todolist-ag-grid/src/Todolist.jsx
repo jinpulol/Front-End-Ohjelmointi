@@ -5,7 +5,7 @@ import TodoGrid from "./components/TodoGrid";
 export default function Todolist() {
 
     const [todos, setTodos] = useState([])
-    const [todo, setTodo] = useState({ descr: "", date: "" })
+    const [todo, setTodo] = useState({ descr: "", date: "", priority: "" })
 
     const handleInputChanged = (event) => {
         event.preventDefault();
@@ -17,9 +17,9 @@ export default function Todolist() {
         setTodos([...todos, todo])
     }
 
-    const deleteTodo = (event) => {
-        event.preventDefault();
-        setTodos(todos.filter((todo, index) => parseInt(event.target.id) !== index))
+    const deleteTodo = (index) => {
+        console.log(index);
+        setTodos(todos.filter((_, i) => i !== index))
     }
 
     return (
@@ -37,12 +37,20 @@ export default function Todolist() {
                 value={todo.date}
                 onChange={handleInputChanged}
             />
+            <input
+                type="text"
+                name="priority"
+                value={todo.priority}
+                onChange={handleInputChanged}
+            />
             <button
                 onClick={addTodo}>
                 Add
             </button>
             <TodoGrid
             todos={todos}
+            deleteTodo={deleteTodo}
+
             />
         </>
     )
