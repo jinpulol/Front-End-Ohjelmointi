@@ -1,8 +1,8 @@
 import { useState } from "react";
 // import TodoTable from "./components/TodoTable";
-import TodoGrid from "./components/TodoGrid";
+import TodoGrid from "./TodoGrid";
 
-export default function Todolist() {
+function Todolist() {
 
     const [todos, setTodos] = useState([])
     const [todo, setTodo] = useState({ descr: "", date: "", priority: "" })
@@ -48,11 +48,12 @@ export default function Todolist() {
                 Add
             </button>
             <TodoGrid
-            todos={todos}
-            deleteTodo={deleteTodo}
+                todos={todos}
+                deleteTodo={deleteTodo}
 
             />
         </>
     )
 
 }
+export default Todolist;
