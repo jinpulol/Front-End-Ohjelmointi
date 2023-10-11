@@ -9,22 +9,25 @@ function TodoGrid(props) {
     const gridRef = useRef();
 
     const columns = [
-        { headerName: 'Task', field: 'descr', sortable: true, filter: true, floatingFilter: true},
-        { headerName: 'Date', field: 'date', sortable: true, filter: true, floatingFilter: true},
-        {headerName: 'Priority', field: 'priority', sortable: true, filter: true, floatingFilter: true,
-        cellStyle: params => {
-            const priority = params.value.toLowerCase();
-            if (priority == 'low') {
-              return { color: 'green' };
-            } else if (priority == 'high') {
-              return { color: 'red' };
-            } else  {
-              return { color: 'black' }; }
-        }}
+        { headerName: 'Task', field: 'descr', sortable: true, filter: true, floatingFilter: true },
+        { headerName: 'Date', field: 'date', sortable: true, filter: true, floatingFilter: true },
+        {
+            headerName: 'Priority', field: 'priority', sortable: true, filter: true, floatingFilter: true,
+            cellStyle: params => {
+                const priority = params.value.toLowerCase();
+                if (priority == 'low') {
+                    return { color: 'green' };
+                } else if (priority == 'high') {
+                    return { color: 'red' };
+                } else {
+                    return { color: 'black' };
+                }
+            }
+        }
     ]
 
     const deleteTask = () => {
-        if (gridRef.current.getSelectedNodes().length == 0){
+        if (gridRef.current.getSelectedNodes().length == 0) {
             alert('Choose task')
         } else {
             const removeIndex = parseInt(gridRef.current.getSelectedNodes()[0].id);
@@ -34,17 +37,17 @@ function TodoGrid(props) {
 
     return (
         <>
-        <button onClick={deleteTask}>Delete Task</button>
-        <div className="ag-theme-material"
-        style={{height:'700px', width: '70%', margin: 'auto'}}>
-        <AgGridReact
-        rowData={props.todos}
-        columnDefs={columns}
-        rowSelection="single"
-        animateRows="true"
-        onGridReady={params => gridRef.current = params.api}>
-        </AgGridReact>
-        </div>
+            <button onClick={deleteTask}>Delete Task</button>
+            <div className="ag-theme-material"
+                style={{ height: '700px', width: '70%', margin: 'auto' }}>
+                <AgGridReact
+                    rowData={props.todos}
+                    columnDefs={columns}
+                    rowSelection="single"
+                    animateRows="true"
+                    onGridReady={params => gridRef.current = params.api}>
+                </AgGridReact>
+            </div>
         </>
 
     )
