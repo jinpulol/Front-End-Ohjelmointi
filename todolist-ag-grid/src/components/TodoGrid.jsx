@@ -45,6 +45,7 @@ function TodoGrid(props) {
                     columnDefs={columns}
                     rowSelection="single"
                     animateRows="true"
+                    ref={gridRef}
                     onGridReady={params => gridRef.current = params.api}>
                 </AgGridReact>
             </div>
